@@ -46,3 +46,7 @@ variable "instance_type" {
   default     = "t2.micro"
   description = "Size and type of compute instance to create"
 }
+
+variable "public_key_name" {
+  "terraform_aws_key"
+}
