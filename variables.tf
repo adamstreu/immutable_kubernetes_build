@@ -1,9 +1,9 @@
 # Enter these values into a new file called terraform.tfvars
 variable "access_key" {}
+
 variable "secret_key" {}
 variable "public_key_path" {}
 variable "public_key_name" {}
-
 
 # AWS Variables
 variable "region" {
@@ -19,32 +19,30 @@ variable "project_name" {
 variable "vpc_cidr" {
   default = "10.123.0.0/16"
 }
+
 variable "public_cidrs" {
   type = "list"
   default = [
     "10.123.1.0/24",
-    "10.123.2.0/24"
+    "10.123.2.0/24",
   ]
 }
+
 variable "accessip" {
   type = "list"
   default = [
     "0.0.0.0/0",
-    "73.239.158.120/32"
+    "73.239.158.120/32",
   ]
 }
 
 # Compute  variables
 variable "instance_count" {
-  default = 2
+  default     = 2
   description = "Number of compute instances to create"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  default     = "t2.micro"
   description = "Size and type of compute instance to create"
 }
-
-
-
-
