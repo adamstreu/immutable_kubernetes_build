@@ -1,0 +1,21 @@
+{
+  "variables": {
+  },
+  "builders": [
+    {
+      "communicator": "ssh",
+      "source_path": "ubuntu/trusty64",
+      "provider": "virtualbox",
+      "output_dir": "/Users/user/packer/test1/output",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "date > /home/vagrant/provisioned.txt"
+      ]
+    }
+  ]
+}
