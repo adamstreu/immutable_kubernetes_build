@@ -1,0 +1,7 @@
+base_box_os_codename: "{{ hostvars[inventory_hostname].ansible_distribution_release }}"
+docker_version: 5:18.09.0~3-0~ubuntu-bionic
+docker_containerd_version: 1.2.0-1
+kube_version: 1.14.1-00
+
+
+

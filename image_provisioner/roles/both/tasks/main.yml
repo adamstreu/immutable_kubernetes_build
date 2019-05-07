@@ -1,0 +1,98 @@
+- name: Import Kubernetes key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+    validate_certs: yes
+  tags: add_kube_key
+
+- name: Import Docker key
+  apt_key:
+    url: https://apt.dockerproject.org/gpg
+    state: present
+    id: 2C52609D
+  tags: add_dock_key
+
+- name: Import Docker Key 
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    validate_certs: yes
+  tags: add_docker_key_1
+
+- name: Update apt cache for new keys
+  apt:
+    update_cache: yes
+  tags: update_cache
+
+- name: Add  Kubernetes repository
+  apt_repository:
+    validate_certs: yes
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main    
+    state: present
+    update_cache: yes
+  tags: add_kube_repo
+
+- name: Add Docker repository
+  apt_repository:
+    validate_certs: yes
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{base_box_os_codename}} stable"
+    state: present
+    update_cache: yes
+  tags: add_docker_repo
+
+- name:  remove any and all versions of docker
+  apt:
+    pkg: "{{ item }}"
+    state: absent
+  loop:
+    - docker
+    - docker-engine
+    - docker-ce
+    - docker.io
+
+- name: Install some neccesary packages for docker
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Install Docker Packages
+  apt:
+    pkg:
+      - 'docker-ce={{ docker_version }}'  
+      - 'docker-ce-cli={{ docker_version }}'
+      - 'containerd.io={{ docker_containerd_version }}'
+    state: present
+    dpkg_options: 'force-confold,force-confdef'
+  tags: install_docker
+
+- name: Install Kubernetes packages
+  apt:
+    pkg: 
+      - "kubelet={{ kube_version }}"
+      - "kubeadm={{ kube_version }}"
+      - "kubectl={{ kube_version }}"
+    state: present
+    dpkg_options: 'force-confold,force-confdef'
+  tags: install_kube
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+    autoremove: yes
+
+
+
+
+
+- name: Update sysctl
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    reload: yes
+  tags: sysctl_update
+    

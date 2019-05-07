@@ -1,0 +1,9 @@
+--- # Main File to provision Kubernetes Cluster Image
+- hosts: local
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  user: vagrant
+  roles:
+    - both
+

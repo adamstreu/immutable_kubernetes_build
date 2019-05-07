@@ -1,9 +1,7 @@
 # Enter these values into a new file called terraform.tfvars
 variable "access_key" {}
-
 variable "secret_key" {}
 variable "public_key_path" {}
-variable "public_key_name" {}
 
 # AWS Variables
 variable "region" {
@@ -48,5 +46,5 @@ variable "instance_type" {
 }
 
 variable "public_key_name" {
-  "terraform_aws_key"
+  default = "terraform_aws_key"
 }
