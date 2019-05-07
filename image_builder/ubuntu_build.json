@@ -4,18 +4,34 @@
   "builders": [
     {
       "communicator": "ssh",
-      "source_path": "ubuntu/trusty64",
+      "source_path": "ubuntu/bionic64",
+      "skip_add": true,
       "provider": "virtualbox",
-      "output_dir": "/Users/user/packer/test1/output",
+      "add_force": 1,
+      "output_dir": "./provisioner/output",
       "type": "vagrant"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
+      "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
       "inline": [
-        "date > /home/vagrant/provisioned.txt"
+        "sleep 30",
+        "sudo sed -i '/^[^#]*PasswordAuthentication[[:space:]]no/c PasswordAuthentication yes' /etc/ssh/sshd_config",      
+        "sudo systemctl restart sshd.service",
+        "sudo apt-add-repository ppa:ansible/ansible -y",
+        "sudo /usr/bin/apt-get update",
+        "sudo /usr/bin/apt-get -y install ansible",
+	"sudo chmod 777 /etc/ansible/hosts",
+        "sudo echo [local] > /etc/ansible/hosts",
+        "sudo echo 127.0.0.1 >> /etc/ansible/hosts"
       ]
+    },
+    {
+      "type":          "ansible-local",
+      "playbook_file": "./provisioner/main.yml",
+      "role_paths":    "./provisioner/roles/both"
     }
   ]
 }
