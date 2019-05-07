@@ -1,3 +1,12 @@
+#Immutable Kubernetes Cluster Build on (AWS or Vagrant)
+Image built in Packer with Ansible provisioner
+Deployed to architecture built on Terraform
+As a (HA) Kubernetes cluster with a DOcker runtime.
+
+In progress
+Modifying below......
+
+
 # aws_infrastructure
 Terraform Build on AWS
 
