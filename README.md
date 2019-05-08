@@ -3,7 +3,9 @@ Images built in Packer with Ansible provisioner
 Networking and architecture built with Terraform
 As a (HA) Kubernetes cluster with a Docker runtime.
 
-
+Under construction.
+Image Builder working - a few lines of sloppy code still.
+AWS ....
 
 
 # Instructions
@@ -24,7 +26,11 @@ As a (HA) Kubernetes cluster with a Docker runtime.
   * Run 'terraform init'
   * Run 'terraform apply'
 
-or just make script to run all of the above - or run through ci/cd chain
+
+
+or just make script to run all of the above - or run through a ci/cd chain
+
+
 
 # terraform.tfvars file template
 Create a file in the top directory called 'terraform.tsvars'.
@@ -37,5 +43,4 @@ Into the file put...
 You may modify a few build variables within the variables.tf file 
 found in the top directory.
 
-A Terraform apply command should do the rest.
 

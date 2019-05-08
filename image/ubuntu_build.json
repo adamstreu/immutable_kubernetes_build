@@ -1,17 +1,18 @@
 {
   "variables": {
   },
+
   "builders": [
     {
       "communicator": "ssh",
       "source_path": "ubuntu/bionic64",
-      "skip_add": true,
       "provider": "virtualbox",
       "add_force": 1,
       "output_dir": "./provisioner/output",
       "type": "vagrant"
     }
   ],
+
   "provisioners": [
     {
       "type": "shell",
