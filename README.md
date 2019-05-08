@@ -2,7 +2,13 @@
 * Kubernetes cluster components are baked into machine Images.
 * Images are built with Packer from an Ubuntu base box using an Ansible provisioner.
 * Networking and architecture are configured with Terraform and deployed over AWS.
-* Creates a highly available Kubernetes cluster using kubeadmn and a flannel overlay network with docker runtime.
+* Creates a highly available Kubernetes cluster using kubeadmn and a flannel overlay network with the docker runtime.
+
+## Cluster Architecture, networking, variables
+* 1 AWS region, 3 availability zones.
+* 3 controller nodes, default 3 worker nodes (future scaling groups).
+* Etcd stacked on controller nodes. 
+* ... More details to follow ...
 
 ## Still to do
 * Create an autoscaling group to maintain [3] controller nodes. - not an asg for fun
