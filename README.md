@@ -4,11 +4,13 @@
 * Networking and architecture are configured with Terraform and deployed over AWS.
 * Creates a highly available Kubernetes cluster using kubeadmn and a flannel overlay network with docker runtime.
 
+
 # Still to do
 * Create an autoscaling group to maintain [3] controller nodes. - not an asg for fun
 * Create a metric autoscaler for worker nodes. - not an asg for fun
 * Create a failover load balancer to the controller plane. - not an elb for fun.
 * Automate build steps below with script or ci/cd pipeline ( with git push automation, etc.)
+
 
 # Instructions
 * Have packages installed
