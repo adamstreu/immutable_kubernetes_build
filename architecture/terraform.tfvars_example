@@ -1,0 +1,3 @@
+access_key = "your_aws_api_access_key"
+secret_key = "your_aws_api_secret_key"
+public_key_path = "/path/to/file/.ssh/id_rsa.pub"
