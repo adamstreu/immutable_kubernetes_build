@@ -1,8 +1,11 @@
-# --- Networking Variables ---
+# --- AWS Variables ---
 
 variable "region" {
   default = "us-east-1"
 }
+
+
+# --- Networking Variables ---
 
 variable "vpc_cidr" {
   default = "10.123.0.0/16"
@@ -27,7 +30,7 @@ variable "accessip" {
 # --- Storage Variables ---
 
 variable "project_name" {
-  default = "immutable_kubernetes_build"
+  default = "immutable-kubernetes-build"
 }
 
 # --- Compute  variables ---
@@ -45,7 +48,6 @@ variable "instance_type" {
 variable "public_key_name" {
   default = "terraform_aws_key"
 }
-
 
 
 # --- Leave following AWS variable declarations as is and edit in terraform.tfvars ---

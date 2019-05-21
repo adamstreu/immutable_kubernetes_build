@@ -7,3 +7,4 @@
 *.box
 Vagrantfile
 *output/
+*.retry
